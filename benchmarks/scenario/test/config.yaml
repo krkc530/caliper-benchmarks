@@ -1,0 +1,20 @@
+testArgs: &test-args
+  numberOfTxs: &number-of-txs 1000
+
+test:
+  name: test
+  description: >-
+    This is test benchmark for emitting event of array input.
+  workers:
+    number: 4
+  rounds:
+    - label: testFunction
+      description: Test description for the emitting a event performance of the deployed contract.
+      txNumber: *number-of-txs
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 700
+      workload:
+        module: benchmarks/scenario/test/testFunction.js
+        arguments: *test-args

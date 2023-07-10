@@ -38,3 +38,15 @@ For detailed information about using this repo with hyperledger fabric see [Hype
 ## Extending the Documented Reports
 
 The documented reports are built automatically from the `reports` branch of this repository and subsequently hosted on the `gh-pages` branch; pull requests must be target the [`reports` branch](https://github.com/hyperledger/caliper-benchmarks/tree/reports) in order for any modifications to be built.
+
+
+# Run test benchmark for local besu network
+```bash
+# bind to besu
+npx caliper bind --caliper-bind-sut besu
+# run benchmark
+npx caliper launch manager \
+	--caliper-workspace . \
+	--caliper-benchconfig benchmarks/scenario/test/config.yaml \
+	--caliper-networkconfig networks/besu/localhost.json
+```
